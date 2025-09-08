@@ -4,14 +4,25 @@
 
 ## 프로젝트 구조
 
-- `filters/`
-  - `gaussian.py`: 가우시안 필터 구현
-  - `hybrid_median.py`: 메디안 혼성 필터 구현
-  - `mean.py`: 평균값 필터 구현
-  - `median.py`: 메디안 필터 구현
-  - `non_local_mean.py`: 비지역평균 필터 구현
-- `Main.py`: 각 필터를 이미지에 적용하고 결과를 출력하는 메인 스크립트
+- `image_denoising/`
+  - `filters/`: 개별 필터 모듈
+  - `utils.py`: 이미지 로딩 및 PSNR 계산 유틸리티
+- `main.py`: 필터 적용 및 비지역평균 실험을 위한 CLI 스크립트
 - `README.md`: 프로젝트에 대한 설명 파일
+
+## 사용 방법
+
+단일 필터를 이미지에 적용하려면 다음과 같이 실행합니다.
+
+```bash
+python main.py apply gaussian input.png output.png --kernel-size 5 --sigma 1.0
+```
+
+비지역평균 필터의 그리드 탐색 실험을 실행하려면:
+
+```bash
+python main.py nlm-grid
+```
 
 ## 필터 소개
 
